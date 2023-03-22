@@ -1,0 +1,19 @@
+﻿@using E_Commerce.BL.Models
+
+@model List<Category>
+
+<div class="card-deck" style="display: inline-block;">
+    @foreach(var item in Model)
+    {
+        <div class="card" style="margin:20px">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Details</small>
+            </div>
+        </div>
+    }
+</div>
