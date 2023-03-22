@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.DL.Repositories
 {
-    public class Test
+    internal class Farrag
     {
     }
 }
