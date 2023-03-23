@@ -14,6 +14,8 @@ namespace E_Commerce.BL.Models
         }
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool Gender { get; set; }
+        public DateTime BirthDate { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string password { get; set; }

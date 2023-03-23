@@ -14,10 +14,10 @@ namespace E_Commerce.DL
         {
 
         }
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=FARRAGABUELELA;Initial Catalog=E-Commerce;Integrated Security=True;TrustServerCertificate=true;");
-        }*/
+        }
         public DbSet<Address> addresses { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Customer> customers { get; set; }
