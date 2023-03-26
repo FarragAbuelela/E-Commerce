@@ -14,6 +14,8 @@ namespace E_Commerce.BL.Models
         public string Description { get; set; }
         public int Quantity { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public string Discriminator { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

@@ -18,6 +18,17 @@ namespace E_Commerce.DL
         {
             optionsBuilder.UseSqlServer("Data Source=FARRAGABUELELA;Initial Catalog=E-Commerce;Integrated Security=True;TrustServerCertificate=true;");
         }*/
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasDiscriminator<string>("Discriminator")
+                .HasValue<ClothingProduct>("ClothingProduct")
+                .HasValue<ElectronicsProduct>("ElectronicsProduct")
+                .HasValue<SportsAndOutdoorsProduct>("SportsAndOutdoorsProducts")
+                .HasValue<BabyAndKidsProduct>("BabyAndKidsProduct")
+                .HasValue<BeautyProduct>("BeautyProduct");
+        }
         public DbSet<Address> addresses { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Customer> customers { get; set; }
