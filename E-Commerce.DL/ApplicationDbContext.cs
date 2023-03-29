@@ -34,7 +34,13 @@ namespace E_Commerce.DL
         public DbSet<Customer> customers { get; set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderItem> orderItems { get; set; }
+        public DbSet<Review> review { get; set; }
         public DbSet<Product> products { get; set; }
+        public DbSet<BabyAndKidsProduct> babyAndKids { get; set; }
+        public DbSet<BeautyProduct> beauty { get; set; }
+        public DbSet<SportsAndOutdoorsProduct> sportsAndOutdoors { get; set; }
+        public DbSet<ClothingProduct> clothing { get; set; }
+        public DbSet<ElectronicsProduct> electronics { get; set; }
 
 
 

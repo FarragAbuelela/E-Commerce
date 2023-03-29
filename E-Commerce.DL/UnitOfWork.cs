@@ -24,6 +24,14 @@ namespace E_Commerce.DL
         public IBaseRepository<OrderItem> OrderItem { get; private set; }
 
         public IBaseRepository<Product> Product { get; private set; }
+        public IBaseRepository<Review> Review { get; private set; }
+        public IBaseRepository<BabyAndKidsProduct> BabyAndKids { get; private set; }
+        public IBaseRepository<ClothingProduct> Clothing { get; private set; }
+        public IBaseRepository<SportsAndOutdoorsProduct> SportAndOutdoors { get; private set; }
+
+        public IBaseRepository<BeautyProduct> Beauty { get; private set; }
+
+        public IBaseRepository<ElectronicsProduct> Electronics { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -34,6 +42,12 @@ namespace E_Commerce.DL
             Order = new BaseRepository<Order>(context);
             OrderItem = new BaseRepository<OrderItem>(context);
             Product = new BaseRepository<Product>(context);
+            Review = new BaseRepository<Review>(context);
+            BabyAndKids = new BaseRepository<BabyAndKidsProduct>(context);
+            Beauty = new BaseRepository<BeautyProduct>(context);
+            Clothing = new BaseRepository<ClothingProduct>(context);
+            Electronics = new BaseRepository<ElectronicsProduct>(context);
+            SportAndOutdoors = new BaseRepository<SportsAndOutdoorsProduct>(context);
         }
 
         public void Dispose()

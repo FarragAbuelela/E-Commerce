@@ -16,5 +16,11 @@ namespace E_Commerce.BL
         IBaseRepository<Order> Order { get; }
         IBaseRepository<OrderItem> OrderItem { get; }
         IBaseRepository<Product> Product { get; }
+        IBaseRepository<Review> Review { get; }
+        IBaseRepository<BabyAndKidsProduct> BabyAndKids { get; }
+        IBaseRepository<BeautyProduct> Beauty { get; }
+        IBaseRepository<ClothingProduct> Clothing { get; }
+        IBaseRepository<ElectronicsProduct> Electronics { get; }
+        IBaseRepository<SportsAndOutdoorsProduct> SportAndOutdoors { get; }
     }
 }
