@@ -39,10 +39,24 @@ namespace E_Commerce.Controllers
         }
         public IActionResult SaveProduct(ProductViewModel p)
         {
-            ClothingProduct cp = (ClothingProduct)p;
+            if(p.ClothingProduct is not null)
+            {
+                ClothingProduct cp = p.ClothingProduct;
 
-            p.CategoryId = (int)TempData["CategoryId"];
-            _unitOfWork.Product.Add(p);
+                cp.CategoryId = (int)TempData["CategoryId"];
+                _unitOfWork.Product.Add(cp);
+                return View("ClothesProduct");
+            }
+            else if(p.ElectronicsProduct is not null)
+            {
+                ClothingProduct cp = p.ClothingProduct;
+
+                cp.CategoryId = (int)TempData["CategoryId"];
+                _unitOfWork.Product.Add(cp);
+                return View("ClothesProduct");
+
+            }
+            
             return View("ClothesProduct");
         }
         public IActionResult AllProduct()
