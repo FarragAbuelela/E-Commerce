@@ -1,0 +1,17 @@
+﻿@using E_Commerce.BL.Models
+
+@model List<Category>
+<h1>AddProduct</h1>
+<form method ="post" asp-controller="Product" asp-action="CkeckCategory">
+<div class="form-group">
+     <label for="catId">Select Product Category</label>
+     <select name="catId" class="form-control">
+        @foreach(var item in Model)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+     </select>
+</div>
+<br />
+<button type="submit" class="btn btn-primary">Add Product</button>
+</form>

@@ -38,7 +38,7 @@ namespace E_Commerce.DL
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("test");
         }
     }
 }
