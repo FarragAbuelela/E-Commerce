@@ -20,13 +20,14 @@ namespace E_Commerce.DL
         public IBaseRepository<Customer> Customer { get; private set; }
 
         public IBaseRepository<Order> Order { get; private set; }
+        public ICartRepository Cart { get; private set; }
 
         public IBaseRepository<OrderItem> OrderItem { get; private set; }
 
         public IBaseRepository<Product> Product { get; private set; }
         public IBaseRepository<Review> Review { get; private set; }
         public IBaseRepository<BabyAndKidsProduct> BabyAndKids { get; private set; }
-        public IBaseRepository<ClothingProduct> Clothing { get; private set; }
+        public IBaseRepository<ClothesProduct> Clothing { get; private set; }
         public IBaseRepository<SportsAndOutdoorsProduct> SportAndOutdoors { get; private set; }
 
         public IBaseRepository<BeautyProduct> Beauty { get; private set; }
@@ -40,12 +41,13 @@ namespace E_Commerce.DL
             Category = new BaseRepository<Category>(context);
             Customer = new BaseRepository<Customer>(context);
             Order = new BaseRepository<Order>(context);
+            Cart = new CartRepository(context);
             OrderItem = new BaseRepository<OrderItem>(context);
             Product = new BaseRepository<Product>(context);
             Review = new BaseRepository<Review>(context);
             BabyAndKids = new BaseRepository<BabyAndKidsProduct>(context);
             Beauty = new BaseRepository<BeautyProduct>(context);
-            Clothing = new BaseRepository<ClothingProduct>(context);
+            Clothing = new BaseRepository<ClothesProduct>(context);
             Electronics = new BaseRepository<ElectronicsProduct>(context);
             SportAndOutdoors = new BaseRepository<SportsAndOutdoorsProduct>(context);
         }

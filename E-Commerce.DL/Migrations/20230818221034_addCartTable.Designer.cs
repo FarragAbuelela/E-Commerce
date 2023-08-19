@@ -4,6 +4,7 @@ using E_Commerce.DL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce.DL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230818221034_addCartTable")]
+    partial class addCartTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace E_Commerce.DL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CartProduct", b =>
-                {
-                    b.Property<int>("CartsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CartsId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CartProduct");
-                });
 
             modelBuilder.Entity("E_Commerce.BL.Models.Address", b =>
                 {
@@ -152,6 +140,9 @@ namespace E_Commerce.DL.Migrations
                     b.Property<bool>("Approved")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
@@ -162,6 +153,8 @@ namespace E_Commerce.DL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId");
 
                     b.HasIndex("CustomerId");
 
@@ -388,21 +381,6 @@ namespace E_Commerce.DL.Migrations
                     b.HasDiscriminator().HasValue("SportsAndOutdoorsProducts");
                 });
 
-            modelBuilder.Entity("CartProduct", b =>
-                {
-                    b.HasOne("E_Commerce.BL.Models.Cart", null)
-                        .WithMany()
-                        .HasForeignKey("CartsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("E_Commerce.BL.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("E_Commerce.BL.Models.Cart", b =>
                 {
                     b.HasOne("E_Commerce.BL.Models.Customer", "Customer")
@@ -416,8 +394,12 @@ namespace E_Commerce.DL.Migrations
 
             modelBuilder.Entity("E_Commerce.BL.Models.Order", b =>
                 {
-                    b.HasOne("E_Commerce.BL.Models.Customer", "Customer")
+                    b.HasOne("E_Commerce.BL.Models.Cart", null)
                         .WithMany("Orders")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("E_Commerce.BL.Models.Customer", "Customer")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -470,6 +452,11 @@ namespace E_Commerce.DL.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("E_Commerce.BL.Models.Cart", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("E_Commerce.BL.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -479,8 +466,6 @@ namespace E_Commerce.DL.Migrations
                 {
                     b.Navigation("Cart")
                         .IsRequired();
-
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("E_Commerce.BL.Models.Order", b =>

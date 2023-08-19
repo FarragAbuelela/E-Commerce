@@ -23,7 +23,7 @@ namespace E_Commerce.DL
         {
             modelBuilder.Entity<Product>()
                 .HasDiscriminator<string>("Discriminator")
-                .HasValue<ClothingProduct>("ClothingProduct")
+                .HasValue<ClothesProduct>("ClothingProduct")
                 .HasValue<ElectronicsProduct>("ElectronicsProduct")
                 .HasValue<SportsAndOutdoorsProduct>("SportsAndOutdoorsProducts")
                 .HasValue<BabyAndKidsProduct>("BabyAndKidsProduct")
@@ -39,8 +39,9 @@ namespace E_Commerce.DL
         public DbSet<BabyAndKidsProduct> babyAndKids { get; set; }
         public DbSet<BeautyProduct> beauty { get; set; }
         public DbSet<SportsAndOutdoorsProduct> sportsAndOutdoors { get; set; }
-        public DbSet<ClothingProduct> clothing { get; set; }
+        public DbSet<ClothesProduct> clothing { get; set; }
         public DbSet<ElectronicsProduct> electronics { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
 
 

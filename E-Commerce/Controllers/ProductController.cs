@@ -13,6 +13,34 @@ namespace E_Commerce.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+        public async Task<IActionResult> AddClothes()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddClothes(ClothesProduct product)
+        {
+            if (ModelState.IsValid)
+            {
+                Console.Write(product.Name);
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                return Content("model valid farrag");
+            }
+            return View();
+        }
+
+
         public IActionResult SelectCategory()
         {
             return View(_unitOfWork.Category.GetAll());
@@ -41,7 +69,7 @@ namespace E_Commerce.Controllers
         {
             if(p.ClothingProduct is not null)
             {
-                ClothingProduct cp = p.ClothingProduct;
+                ClothesProduct cp = p.ClothingProduct;
 
                 cp.CategoryId = (int)TempData["CategoryId"];
                 _unitOfWork.Product.Add(cp);
@@ -49,7 +77,7 @@ namespace E_Commerce.Controllers
             }
             else if(p.ElectronicsProduct is not null)
             {
-                ClothingProduct cp = p.ClothingProduct;
+                ClothesProduct cp = p.ClothingProduct;
 
                 cp.CategoryId = (int)TempData["CategoryId"];
                 _unitOfWork.Product.Add(cp);

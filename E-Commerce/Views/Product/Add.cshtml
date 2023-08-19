@@ -1,0 +1,51 @@
+﻿
+
+<form method="post">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="Name">
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" class="form-control" id="price" name="Price" step="0.01">
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" class="form-control" id="quantity" name="Quantity">
+    </div>
+    <div class="form-group">
+        <label for="catId">Select Product Category</label>
+        <select name="catId" class="form-control">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <label for="size">Size:</label>
+        <input type="text" class="form-control" id="size" name="Size">
+    </div>
+    <div class="form-group">
+        <label for="color">Color:</label>
+        <input type="text" class="form-control" id="color" name="Color">
+    </div>
+    <div class="form-group">
+        <label for="material">Material:</label>
+        <input type="text" class="form-control" id="material" name="Material">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+    <br />
+</form>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.BL.Models
 {
-    public class ClothingProduct : Product
+    public class ClothesProduct : Product
     {
         public string Size { get; set; }
         public string Color { get; set; }

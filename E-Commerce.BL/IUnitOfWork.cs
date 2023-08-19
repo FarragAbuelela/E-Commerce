@@ -13,13 +13,14 @@ namespace E_Commerce.BL
         IBaseRepository<Address> Address { get; }
         IBaseRepository<Category> Category { get; }
         IBaseRepository<Customer> Customer { get; }
+        ICartRepository Cart { get; }
         IBaseRepository<Order> Order { get; }
         IBaseRepository<OrderItem> OrderItem { get; }
         IBaseRepository<Product> Product { get; }
         IBaseRepository<Review> Review { get; }
         IBaseRepository<BabyAndKidsProduct> BabyAndKids { get; }
         IBaseRepository<BeautyProduct> Beauty { get; }
-        IBaseRepository<ClothingProduct> Clothing { get; }
+        IBaseRepository<ClothesProduct> Clothing { get; }
         IBaseRepository<ElectronicsProduct> Electronics { get; }
         IBaseRepository<SportsAndOutdoorsProduct> SportAndOutdoors { get; }
     }
